@@ -1,0 +1,41 @@
+GitHub Stars
+Copyright (c) 2026 mokouliszt
+Licensed under the MIT License (see LICENSE).
+
+This application redistributes the following third-party components.
+Full license texts are in third_party/licenses/ and inside the APK under
+assets/licenses/.
+
+1. OpenAI Codex app-server (binary, unmodified)
+   https://github.com/openai/codex  (release rust-v0.160.0, and later releases
+   downloaded at runtime by the in-app updater)
+   Apache License 2.0 - Copyright 2025 OpenAI
+   Files: Codex-APACHE-2.0.txt, Codex-NOTICE.txt
+
+2. Laya multilingual LiteRT model and Android host code
+   https://huggingface.co/litert-community/Laya-Multilingual-LiteRT
+   (revision 32f1b84d55f42a323464fad22594cfc2059e7467)
+   Apache License 2.0. Derived from Laya by Convai Innovations
+   (https://huggingface.co/convaiinnovations/laya), whose multilingual encoder
+   derives from mmBERT-base (MIT; Marone, Weller, Fleshman, Yang, Lawrie,
+   Van Durme; JHU CLSP) and ModernBERT (Apache-2.0; Answer.AI, LightOn and
+   contributors; Copyright 2022 MosaicML Examples authors).
+   The model files are shipped unmodified as APK assets.
+   The Kotlin sources in app/src/main/java/com/laya are taken from the sample.
+   Changes made for this app:
+     - LayaEngine: loads graphs from APK assets, maps the embedding table out of
+       the APK, keeps only the S256/WFP16 graph, runs on the CPU only (GPU/NPU
+       paths and gate timings removed).
+     - LayaTokenizer: can be constructed from a Reader.
+     - LayaEmbeddings: can wrap an existing read-only mapping.
+   Files: Laya-LiteRT-APACHE-2.0.txt, Laya-LiteRT-NOTICE.txt,
+   Laya-APACHE-2.0.txt, ModernBERT-APACHE-2.0.txt, mmBERT-MIT.txt,
+   CALIBRATION_DATASETS.md
+
+3. LiteRT (Google AI Edge)
+   https://github.com/google-ai-edge/LiteRT  - Apache License 2.0
+   File: LiteRT-APACHE-2.0.txt
+
+4. Android/Java libraries (AndroidX, Kotlin coroutines, OkHttp) - Apache
+   License 2.0. Web UI libraries (React, Radix UI, lucide-react, Tailwind CSS,
+   clsx, tailwind-merge) - MIT / ISC.

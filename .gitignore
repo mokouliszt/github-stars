@@ -1,0 +1,16 @@
+# GithubStars
+*.iml
+*.jks
+*.keystore
+.DS_Store
+.gradle/
+.idea/
+.kotlin/
+app/src/main/assets/webui/
+build/
+keystore.properties
+local.properties
+node_modules/
+webui/dist/
+webui/tsconfig.tsbuildinfo
+.cache/
