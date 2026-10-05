@@ -575,7 +575,6 @@ export default function App() {
         models={models}
         update={update}
         progress={progress.codexUpdate ?? null}
-        laya={laya}
         version={initial.version}
         summaryCount={Object.keys(summaries).length}
         onGithubLogout={() => {

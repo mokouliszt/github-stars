@@ -128,8 +128,8 @@ android {
         // 28 on purpose: Android only lets apps targeting <= 28 execute binaries they download,
         // which the in-app Codex updater needs (see CodexUpdater). Same trade-off as Termux.
         targetSdk = 28
-        versionCode = 2
-        versionName = "1.1.0"
+        versionCode = 3
+        versionName = "1.1.1"
         ndk { abiFilters += "arm64-v8a" }
         buildConfigField("String", "CODEX_VERSION", "\"$codexVersion\"")
     }

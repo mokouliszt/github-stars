@@ -147,7 +147,7 @@ class MainActivity : ComponentActivity() {
         appScope.launch {
             val policy = store.settings().optString("codexAutoUpdate", "wifi")
             if (!CodexUpdater.shouldCheck(ctx)) return@launch
-            val rel = runCatching { CodexUpdater.latest(ctx, github.token) }.getOrNull() ?: return@launch
+            val rel = runCatching { CodexUpdater.latest(ctx, github.validToken()) }.getOrNull() ?: return@launch
             if (!CodexUpdater.isNewer(ctx, rel)) {
                 emit("codexUpdate", CodexUpdater.status(ctx)); return@launch
             }
@@ -160,7 +160,7 @@ class MainActivity : ComponentActivity() {
     private fun runCodexUpdate(reqId: String, known: CodexUpdater.Release? = null) =
         launch(reqId, I18n.t("Codexを更新中", "Updating Codex"), progressKind = "codexUpdate") {
             val ctx = applicationContext
-            val rel = known ?: CodexUpdater.latest(ctx, github.token)
+            val rel = known ?: CodexUpdater.latest(ctx, github.validToken())
             if (!CodexUpdater.isNewer(ctx, rel)) {
                 emit("codexUpdate", CodexUpdater.status(ctx).put("upToDate", true)); return@launch
             }
@@ -534,7 +534,7 @@ class MainActivity : ComponentActivity() {
         @JavascriptInterface
         fun codexCheckUpdate(reqId: String) = launch(reqId, "Codex", foreground = false) {
             val ctx = applicationContext
-            val rel = CodexUpdater.latest(ctx, github.token)
+            val rel = CodexUpdater.latest(ctx, github.validToken())
             emit("codexUpdate", CodexUpdater.status(ctx).put("available",
                 if (CodexUpdater.isNewer(ctx, rel)) rel.version else ""))
         }

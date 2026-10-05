@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ChevronLeft } from "lucide-react";
-import type { CodexModel, CodexUpdate, GhUser, ModelStatus, Progress, Settings } from "@/lib/native";
+import type { CodexModel, CodexUpdate, GhUser, Progress, Settings } from "@/lib/native";
 import { effortLabel, useI18n } from "@/lib/i18n";
 import { date } from "@/lib/utils";
 import { ClientIdHelp } from "./Onboarding";
@@ -18,7 +18,6 @@ export function SettingsSheet({
   models,
   update,
   progress,
-  laya,
   version,
   onGithubLogout,
   onCodexLogin,
@@ -38,7 +37,6 @@ export function SettingsSheet({
   models: CodexModel[] | null;
   update: CodexUpdate;
   progress: Progress | null;
-  laya: ModelStatus;
   version: string;
   onGithubLogout: () => void;
   onCodexLogin: () => void;
@@ -227,7 +225,6 @@ export function SettingsSheet({
           </Group>
 
           <Group title={t("setHyper")} hint={t("setHyperHint")}>
-            <Row label={t("setHyperModel")} detail={!laya.available ? t("setHyperMissing") : laya.loaded ? t("setHyperLoaded", { n: laya.threads }) : t("setHyperLazy")} />
             <Row label={t("setHyperCandidates")} detail={t("setHyperCandidatesDetail")} stack right={
               <Segmented value={String(settings.hyperCandidates) as "10" | "20" | "30"}
                 onChange={(v) => onChange({ hyperCandidates: Number(v) })}

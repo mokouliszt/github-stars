@@ -1,7 +1,10 @@
 # GithubStars
 *.iml
+# signing keys and their passwords (never commit)
 *.jks
 *.keystore
+*.p12
+.env
 .DS_Store
 .gradle/
 .idea/
